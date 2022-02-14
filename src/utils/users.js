@@ -1,6 +1,5 @@
 const users = []
 
-
 const addUser = ({ id, username, room }) => {
 
     username = username.trim().toLowerCase()
@@ -55,9 +54,25 @@ const getUsersInRoom = (room)=>{
 }
 
 
+const getRooms = ()=>{
+    let roomsName = users.map((user)=> {
+        return user.room
+    })
+
+    // roomsName = roomsName.filter((c, index) => {
+    //     return roomsName.indexOf(c) === index;
+    // });
+
+    roomsName = [...new Set(roomsName)]
+    return roomsName.map((room)=> {
+        return { roomname: room }
+    })
+}
+
 module.exports = {
     addUser,
     removeUser,
     getUser,
-    getUsersInRoom
+    getUsersInRoom,
+    getRooms
 }

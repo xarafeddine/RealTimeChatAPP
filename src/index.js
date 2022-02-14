@@ -8,7 +8,8 @@ const {
     addUser,
     removeUser,
     getUser,
-    getUsersInRoom
+    getUsersInRoom,
+    getRooms
 } = require('./utils/users')
 
 const app = express()
@@ -42,6 +43,10 @@ io.on('connection', (socket)=>{
             room: user.room,
             users: getUsersInRoom(user.room)
         })
+
+        io.emit('appData', {
+            availableRooms: getRooms()
+        })
         callback()
     } )
 
@@ -55,6 +60,10 @@ io.on('connection', (socket)=>{
             io.to(user.room).emit('roomData', {
                 room: user.room,
                 users: getUsersInRoom(user.room)
+            })
+
+            io.emit('appData', {
+                availableRooms: getRooms()
             })
         }
     })

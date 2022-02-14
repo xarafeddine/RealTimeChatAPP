@@ -11,7 +11,8 @@ const $messages = document.querySelector('#messages')
 // templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
-const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
+const roomSidebarTemplate = document.querySelector('#room-sidebar-template').innerHTML
+const appSidebarTemplate = document.querySelector('#app-sidebar-template').innerHTML
 
 // options
 const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
@@ -75,12 +76,20 @@ socket.on('locationMessage', (message)=>{
 
 
 socket.on('roomData', ({room, users})=>{
-    const html = Mustache.render(sidebarTemplate, {
+    const html = Mustache.render(roomSidebarTemplate, {
         room,
         users
     })
-    document.querySelector('#sidebar').innerHTML = html
+    document.querySelector('#room-sidebar').innerHTML = html
 })
+
+socket.on('appData', ({availableRooms})=>{
+    const html = Mustache.render(appSidebarTemplate, {
+        availableRooms
+    })
+    document.querySelector('#app-sidebar').innerHTML = html
+})
+
 
 $messageForm.addEventListener('submit', (e)=>{
     e.preventDefault()
