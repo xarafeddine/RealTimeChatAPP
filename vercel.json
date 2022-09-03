@@ -1,7 +1,6 @@
 {
   "version": 2,
   "name": "real_time_char",
-  "builds": [{ "src": "/src", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/src" }],
+
   "rewrites": [{ "source": "/(.*)", "destination": "/src" }]
 }
