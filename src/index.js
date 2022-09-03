@@ -94,3 +94,5 @@ io.on('connection', (socket)=>{
 server.listen(port, ()=>{
     console.log('Server in up on port:', port)
 })
+
+module.exports = server;
