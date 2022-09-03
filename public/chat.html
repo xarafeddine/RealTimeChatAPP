@@ -1,83 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat App</title>
-    <link rel="icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/styles.min.css">
-</head>
-<body>
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" href="/css/styles.min.css" />
+  </head>
+  <body>
     <div class="chat">
-        <div id="sidebar" class="chat__sidebar">
-            <div id="room-sidebar">
-            </div>
+      <div id="sidebar" class="chat__sidebar">
+        <div id="room-sidebar"></div>
 
-            <br>
-            <br>
+        <br />
+        <br />
 
-            <div id="app-sidebar">
-            </div>
+        <div id="app-sidebar"></div>
+      </div>
+
+      <div class="chat__main">
+        <div id="messages" class="chat__messages"></div>
+
+        <div class="compose">
+          <form id="message-form">
+            <input
+              name="message"
+              placeholder="Message"
+              required
+              autocomplete="off"
+            />
+            <button>Send</button>
+          </form>
+          <button id="send-location">Send Location</button>
         </div>
-
-        <div class="chat__main">
-            <div id="messages" class="chat__messages"></div>
-
-            <div class="compose">
-                <form id="message-form">
-                    <input name="message" placeholder="Message" required autocomplete="off">
-                    <button>Send</button>
-                </form>
-                <button id="send-location">Send Location</button>
-                
-            </div>
-            
-        </div>
+      </div>
     </div>
 
-   
-
-    
-
     <script id="message-template" type="text/html">
-        <div class="message">
-            <p>
-                <span class="message__name">{{username}}</span>
-                <span class="message__meta">{{createdAt}}</span>
-            </p>
-            <p>{{message}}</p>
-        </div>
+      <div class="message">
+        <p>
+          <span class="message__name">{{username}}</span>
+          <span class="message__meta">{{createdAt}}</span>
+        </p>
+        <p>{{message}}</p>
+      </div>
     </script>
 
     <script id="location-message-template" type="text/html">
-        <div class="message">
-            <p>
-                <span class="message__name">{{username}}</span>
-                <span class="message__meta">{{createdAt}}</span>
-            </p>
-            <p><a href="{{url}}" target="_blank">My current location</a></p>
-        </div>
+      <div class="message">
+        <p>
+          <span class="message__name">{{username}}</span>
+          <span class="message__meta">{{createdAt}}</span>
+        </p>
+        <p><a href="{{url}}" target="_blank">My current location</a></p>
+      </div>
     </script>
 
-
     <script id="room-sidebar-template" type="text/html">
-        <h2 class="room-title">{{room}}</h2>
-        <h3 class="list-title">Users:</h3>
-        <ul class="users">
-            {{#users}}
-                <li>&nbsp; {{username}}</li>
-            {{/users}}
-        </ul>
+      <div>
+        <a href="/"><button ><= Back</button></a>
+      </div>
+      <h2 class="room-title">Room: {{room}}</h2>
+      <h3 class="list-title">Users:</h3>
+      <ul class="users">
+        {{#users}}
+        <li>&nbsp; {{username}}</li>
+        {{/users}}
+      </ul>
     </script>
 
     <script id="app-sidebar-template" type="text/html">
-        <h3 class="list-title">Available Rooms:</h3>
-        <ul class="users">
-            {{#availableRooms}}
-                <li>&nbsp; {{roomname}}</li>
-            {{/availableRooms}}
-        </ul>
+      <h3 class="list-title">Current Active Rooms:</h3>
+      <ul class="users">
+        {{#availableRooms}}
+        <li>
+          &nbsp;&nbsp;<strong style="color:rgb(174, 0, 255);"
+            >{{roomname}}</strong
+          >
+        </li>
+        {{/availableRooms}}
+      </ul>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
@@ -85,5 +88,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
-</body>
+  </body>
 </html>

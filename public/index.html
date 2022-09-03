@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat App</title>
-    <link rel="icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/styles.min.css">
-</head>
-<body>
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" href="/css/styles.min.css" />
+  </head>
+  <body>
     <div class="centered-form">
-        <div class="centered-form__box">
-            <h1>Join</h1>
-            <form action="/chat.html">
-                <label for="">Display name</label>
-                <input type="text" name="username" placeholder="Display name" require>
-                <label for="">Room</label>
-                <input type="text" name="room" placeholder="Room" require>
-                <button>Join</button>
-            </form>
-        </div>
+      <div class="header">
+        <h1>Welcome to Real Time Chat App</h1>
+        <p>You can join an existing Room or create a new one</p>
+      </div>
+      <br />
+      <div class="centered-form__box">
+        <h1>Join a Room</h1>
+        <form action="/chat.html">
+          <label for=""><strong>Your name</strong></label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter a username"
+            require
+          />
+          <label for=""><strong>You Room</strong></label>
+          <input
+            type="text"
+            name="room"
+            placeholder="Enter a Room name"
+            require
+          />
+          <button>Join</button>
+        </form>
+      </div>
     </div>
-</body>
+  </body>
 </html>
