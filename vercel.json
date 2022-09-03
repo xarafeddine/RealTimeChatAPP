@@ -1,6 +1,6 @@
 {
   "version": 2,
   "name": "real_time_char",
-  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/src/(.*)", "dest": "/src" }]
+  "builds": [{ "src": "./src/index.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "./src/index.js" }]
 }
